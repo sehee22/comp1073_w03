@@ -7,7 +7,8 @@ var customName = document.querySelector("#customname");
 // randomize for the button
 var randomize = document.querySelector(".randomize");
 // story for the paragraph that outputs the final story
-var story = document.querySelector(".story");
+var story = document.querySelector(".story_container");
+story.style.visibility = "hidden";
 
 /* STEP 3: Create the variable that contains the story string that will be modified - use var storyText to containt the following:
 'It was 94 farenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.'
@@ -85,10 +86,12 @@ function result() {
 		newStory = newStory.replace("94 farenheit", `${temp} °C`);
   }
 	/* STEP 13: Make the textContent property of the story variable (which references the paragraph) equal to newStory */
-	  story.textContent = newStory;
-	  // textContent => insertAdjacentHTML 
-	// The following line makes the paragraph visible
-	story.style.visibility = 'visible';
+	  //story.textContent = newStory;
+		  story.insertAdjacentHTML("afterbegin"
+		  , "<div class = \"card\"> <div class = \"card-body\">" + newStory + "</div></div>");
+	  // The following line makes the paragraph visible
+		story.style.visibility = 'visible';
+
 }
 
 // EVENT LISTENERS
